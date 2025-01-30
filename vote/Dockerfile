@@ -13,6 +13,10 @@ WORKDIR /usr/local/app
 COPY requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy our code from the current folder to the working directory inside the container
+# Note I had to move copy up since CMD referenced the `app.py` file
+COPY . . 
+
 # dev defines a stage for development, where it'll watch for filesystem changes
 FROM base AS dev
 RUN pip install watchdog
@@ -22,8 +26,6 @@ CMD ["python", "app.py"]
 # final defines the stage that will bundle the application for production
 FROM base AS final
 
-# Copy our code from the current folder to the working directory inside the container
-COPY . .
 
 # Make port 80 available for links and/or publish
 EXPOSE 80

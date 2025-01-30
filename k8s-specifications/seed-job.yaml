@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: seed-job
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: seed
+          image: dockersamples/examplevotingapp_seed
+          # command: ["sh", "-c", "python seed.py"] # Adjust based on actual seed logic
+          env:
+            - name: DATABASE_URL
+              value: "postgres://postgres:postgres@db:5432/postgres"
