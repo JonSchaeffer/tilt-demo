@@ -40,6 +40,17 @@ Once the k3d cluster has been created, then you can run from the mother repo's r
 
 Note: `tilt up` can only be run from the repo's root dir.
 
+## Accessing the application
+
+This application is hosted on two ports. The vote app is on port 8082 and the results app is on port 8083. You can access them by going to `http://localhost:8082` and `http://localhost:8083` respectively.
+
+The database is also exposed on port 5432. You can connect to it using the following credentials:
+- Host: `localhost`
+- Port: `5432`
+- Database: `postgres`
+- User: `postgres`
+- Password: `postgres`
+
 
 ## Viewing pods in tilt
 
