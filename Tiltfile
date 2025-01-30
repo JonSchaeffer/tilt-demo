@@ -51,7 +51,7 @@ k8s_yaml([
   "./k8s-specifications/result-deployment.yaml",
   "./k8s-specifications/result-service.yaml",
   "./k8s-specifications/worker-deployment.yaml",
-  "./k8s-specifications/seed-job.yaml",
+  #"./k8s-specifications/seed-job.yaml",
 ])
 
 # Define port forwarding for local dev
@@ -59,7 +59,7 @@ k8s_resource("vote", port_forwards=['8082:80'])
 k8s_resource("result", port_forwards=['8083:80'])
 
 # Define seed-job resource, but don't auto run
-k8s_resource("seed-job", auto_init=False)
+#k8s_resource("seed-job", auto_init=False)
 
 
 # Automatically watch and rebuild when files change
